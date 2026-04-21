@@ -1,0 +1,106 @@
+📄 SAP CAP BTP PROJECT REPORT
+🧾 Title: Procure-to-Pay (P2P) System using SAP CAP (Node.js + OData)
+1. 📌 Introduction
+
+This project demonstrates an end-to-end Procure-to-Pay (P2P) business process using SAP Cloud Application Programming Model (CAP) on SAP BTP (Business Technology Platform) with Node.js and OData services.
+
+The system simulates a real-world purchasing cycle where a company:
+
+Creates Vendors
+Maintains Products
+Creates Purchase Orders
+Processes Goods Receipt
+Completes procurement cycle
+2. 🎯 Objective
+
+The main objectives of this project are:
+
+To implement SAP CAP-based backend application
+To simulate real-world P2P business flow
+To build OData services for CRUD operations
+To implement business logic (total amount calculation, status updates)
+To test APIs using REST calls (curl)
+3. 🏗️ Technology Stack
+SAP CAP (Cloud Application Programming Model)
+Node.js
+SQLite (in-memory database)
+OData V4
+SAP BTP (conceptual deployment)
+Bash / curl for API testing
+4. 🧩 System Design
+
+The system consists of the following entities:
+
+📦 Entities:
+Vendor
+Product
+Purchase Order (PO)
+PO Items
+🔄 Process Flow:
+Vendor → Product → Purchase Order → Approval → Goods Receipt → Completion
+5. ⚙️ Implementation Details
+📁 CAP Project Structure
+db/schema.cds → Data models
+srv/service.cds → Service definitions
+srv/service.js → Business logic
+package.json → Dependencies
+📌 Key Business Logic (Node.js)
+✔ Total Amount Calculation
+Calculated automatically during Purchase Order creation
+Formula:
+totalAmount = quantity × price
+✔ Status Management
+Stage	Status
+PO Created	Created
+After Approval	Approved
+After GR	GR Done
+Final	Completed
+✔ Stock Update
+
+On Goods Receipt:
+
+Product stock is increased automatically
+6. 🔌 API Endpoints Used
+Operation	Endpoint
+Create Vendor	POST /Vendors
+Create Product	POST /Products
+Create PO	POST /PurchaseOrders
+Approve PO	POST /approvePO
+Goods Receipt	POST /goodsReceipt
+Complete PO	POST /completePO
+7. 🧪 Testing Method
+
+All APIs were tested using curl commands.
+
+Example:
+
+curl -X POST http://localhost:4004/odata/v4/catalog/Vendors \
+-H "Content-Type: application/json" \
+-d '{"name":"ABC Ltd","email":"abc@test.com"}'
+8. 📊 Sample Output
+✔ Purchase Order Created:
+{
+  "status": "Created",
+  "totalAmount": 100000
+}
+✔ Final Output:
+{
+  "status": "Completed",
+  "totalAmount": 100000
+}
+9. 📸 Evidence
+
+The project execution was verified using:
+
+Terminal logs (output.txt)
+API responses
+Screenshot of final Purchase Order status
+10. 🚀 Result
+
+The system successfully demonstrates a complete end-to-end P2P cycle using SAP CAP framework.
+
+✔ Vendor creation works
+✔ Product management works
+✔ Purchase Order lifecycle works
+✔ Business logic executes correctly
+✔ Status transitions are functional
