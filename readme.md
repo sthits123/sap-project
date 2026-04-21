@@ -2,12 +2,12 @@
 
 ## Project Report
 
-**Author:** CAP Development Team  
+ 
 **Date:** April 2026  
 **Framework:** SAP Cloud Application Programming Model (CAP)  
 **Runtime:** Node.js with OData V4  
 **Database:** SQLite (in-memory)  
-**Status:** ✅ Completed
+
 
 ---
 
